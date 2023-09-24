@@ -1,1 +1,1 @@
-# blockchain
+# hash-generator
