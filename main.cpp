@@ -25,7 +25,7 @@ string generateHash(string &str) {
 
     //----------CONVERSION TO HEX----------
     stringstream hashStream;
-    hashStream << std::hex << std::setfill('O');
+    hashStream << std::hex << std::setfill('0');
     for(int i = 0; i < 8; i ++) {
         hashStream << std::setw(8) << hash[i];
     }
