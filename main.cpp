@@ -59,16 +59,28 @@ int main() {
         string       str,           // string
                      file;          // file name
 
-        system("ls read");
+        system("ls read/1001");
         cout << "Enter the name of the file: "; cin >> file;
         try {
             cout << "Reading data...\n";
-            in.open("read/" + file);
+            in.open("read/1001/" + file);
             if(in.fail()) throw 6;
             buf << in.rdbuf();
             in.close();
             str = buf.str();
-            cout << "Hash of '" << str << "': " << generateHash(str) << "\n";
+
+            //----------EFFICIENCY MEASURING----------
+            cout << "Hashing data...\n";
+            auto start = std::chrono::high_resolution_clock::now();
+
+            string hash = generateHash(str);
+
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> difference = end - start;
+
+            cout << "finished in: " << difference.count() << " s\n";
+
+            cout << "Hash of '" << file << "': " << hash << "\n";
 
         } catch(int e) {
             cout << "Error " << e << ": file not found\n";
