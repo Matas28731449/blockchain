@@ -6,7 +6,7 @@ Clone my GitHub repository: `git clone https://github.com/Matas28731449/hash-gen
 
 Navigate to cloned repository: `cd {folder name}/hash-generator/` ;
 
-Choose the desired branch: `git checkout v0.1 (or v0.2)` ;
+Choose the desired branch: `git checkout v0.2 (or v0.1)` ;
 
 Compile the files via Makefile: `make` ;
 
@@ -81,26 +81,30 @@ Follow the instructions, <b style="color: blue">happy using!</b>
 
 *The two files consist of the same, but different, character :*
 
+| Filename    | Hash                                                             |
+|-------------|------------------------------------------------------------------|
 | symbol1.txt | 0000000000000000000000022bb55ee60000000000000000000000022bb55ee6 |
-|------------:|------------------------------------------------------------------|
 | symbol2.txt | 0000000000000000000000022bb660060000000000000000000000022bb66006 |
 
 *The two files consist of 1001 randomly generated characters :*
 
+| Filename         | Hash                                                             |
+|------------------|------------------------------------------------------------------|
 | 1001symbols1.txt | 07744cc55dd44ff22cc88cc77aa66dd507744cc55dd44ff22cc88cc77aa66dd5 |
-|-----------------:|------------------------------------------------------------------|
 | 1001symbols2.txt | 0bb4466ff991144110077dd889900eec0bb4466ff991144110077dd889900eec |
 
 *The two files consist of 1001 characters, but differ from each other by only one character :*
 
+| Filename         | Hash                                                             |
+|------------------|------------------------------------------------------------------|
 | 1001symbolsM.txt | 0aa999933ff6611ff88bb22bb99991180aa999933ff6611ff88bb22bb9999118 |
-|-----------------:|------------------------------------------------------------------|
 | 1001symbolsX.txt | 01155aa9911dd55ee77ff7711bbff66301155aa9911dd55ee77ff7711bbff663 |
 
 *Empty file:*
 
+| Filename  | Hash                                                             |
+|-----------|------------------------------------------------------------------|
 | empty.txt | 0000000000000000000000000115500500000000000000000000000001155005 |
-|----------:|------------------------------------------------------------------|
 
 **Pseudocode**
 
