@@ -19,20 +19,17 @@ using std::pair;
 using std::cout;
 
 //----------HASH GENERATOR----------
-string generateHash(string &str) {
-    unsigned int hash[8] = {0};     // 8 elements - 64 symbols - 256 bits
-
+string generateHash(string &str) {// DJB2 algorithm from the internet
+    unsigned long hash = 5381;
     for(char c : str) {
-        for(int i = 0; i < 8; i ++) {
-            hash[i] += c * (i + 1); // multiplying the character's ASCII value with (i + 1) / hashing
-        }
+        hash = ((hash << 5) + hash) + c;
     }
 
     //----------CONVERSION TO HEX----------
     stringstream hashStream;
     hashStream << std::hex << std::setfill('0');
-    for(int i = 0; i < 8; i ++) {
-        hashStream << std::setw(8) << hash[i];
+    for(int i = 0; i < 32; i ++) {
+        hashStream << std::setw(2) << ((hash >> (4 * (31 - i))) & 0xFF);
     }
 
     return hashStream.str();

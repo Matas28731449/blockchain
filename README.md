@@ -6,6 +6,8 @@ Clone my GitHub repository: `git clone https://github.com/Matas28731449/hash-gen
 
 Navigate to cloned repository: `cd {folder name}/hash-generator/` ;
 
+Choose the desired branch: `git checkout v0.1 (or v0.2)` ;
+
 Compile the files via Makefile: `make` ;
 
 Run the program: `./main` ;
@@ -14,21 +16,21 @@ Follow the instructions, <b style="color: blue">happy using!</b>
 
 **Findings**
 
-- The hash algorithm I created, regardless of the input, the `output` is always the `same length` ;
+- The hash algorithm (DJB2) I used, regardless of the input, the `output` is always the `same length` ;
 
 - The `hash` of the same `input` file is `always the same` ;
 
-- The `efficiency` of the function `does not suffer` from the `size of the input` file (the algorithm is ridiculously fast);
+- The `efficiency` of the function `does not suffer` from the `size of the input` file (the algorithm (DJB2) is still ridiculously fast, but a bit slower than mine);
 
-- The algorithm is `partially resistant` to collisions (the longer the string, the lower the probability of collision) ;
+- The algorithm is `fully resistant` to collisions ;
 
-- At the `bit-wise` level, the hash `percentage difference` is `low`, this is because there are more bits as units ;
+- At the `bit-wise` level, the hash `percentage difference` is much more `higher` than before ;
 
-- At the `hexadecimal` level, the `percentage difference` between hashes is `avarage` ;
+- At the `hexadecimal` level, the `percentage difference` between hashes is almost `perfect` ;
 
-- The algorithm `performs well in basic functions`, which is why it can be described as demonstrative ;
+- The algorithm `performs extremelly well in all tested functions` ;
 
-- If safety is considered, `collision resistence` and `avalanche effect could perform better` .
+- `Compared to the previous` used algorithm, this algorithm `(DJB2) is visibly better in all aspects` ;
 
 **Avalanche effect analysis**
 
@@ -40,13 +42,13 @@ Follow the instructions, <b style="color: blue">happy using!</b>
 
 | Minimum value | Avarage value | Maximum value |
 |---------------|---------------|---------------|
-| 2.34375%      | 8.99111%      | 22.0703%      |
+| 0.390625%     | 31.7058%      | 50.7812%      |
 
 *Hexadecimal level difference :*
 
 | Minimum value | Avarage value | Maximum value |
 |---------------|---------------|---------------|
-| 12.5%         | 27.6937%      | 50%           |
+| 3.125%        | 90.2188%      | 96.875%       |
 
 **Collision analysis**
 
@@ -54,44 +56,68 @@ Follow the instructions, <b style="color: blue">happy using!</b>
 
 | Pairs | Length | Collisions |
 |-------|--------|------------|
-| 25000 | 10     | 113        |
-| 25000 | 100    | 26         |
-| 25000 | 500    | 18         |
-| 25000 | 1000   | 6          |
+| 25000 | 10     | 0          |
+| 25000 | 100    | 0          |
+| 25000 | 500    | 0          |
+| 25000 | 1000   | 0          |
 
 **Efficiency analysis**
 
 | Rows/Times | 1           | 2           | 3           | 4           | 5           | Avg. time  |
 |------------|-------------|-------------|-------------|-------------|-------------|------------|
-| 1          | 0.000025105 | 0.000024495 | 0.00002109  | 0.000025388 | 0.000024308 | 0.00002407 |
-| 2          | 0.000025332 | 0.000024613 | 0.000023867 | 0.000025222 | 0.000024833 | 0.00002477 |
-| 4          | 0.000024973 | 0.000025595 | 0.00002615  | 0.000024303 | 0.00006708  | 0.00003362 |
-| 8          | 0.000025912 | 0.000025058 | 0.000025105 | 0.000024748 | 0.000020465 | 0.00002425 |
-| 16         | 0.000017596 | 0.00002771  | 0.00006431  | 0.000024572 | 0.000024815 | 0.0000318  |
-| 32         | 0.00002552  | 0.000015277 | 0.000026707 | 0.000026348 | 0.000026237 | 0.00002401 |
-| 64         | 0.000029943 | 0.000029483 | 0.0000289   | 0.00002419  | 0.000028712 | 0.00002824 |
-| 128        | 0.000035895 | 0.000020935 | 0.000036592 | 0.000036005 | 0.00003748  | 0.00003338 |
-| 256        | 0.00005041  | 0.00005283  | 0.00005318  | 0.000041813 | 0.000051743 | 0.00004999 |
-| 512        | 0.00009209  | 0.000089252 | 0.000094515 | 0.00009622  | 0.000085825 | 0.00009158 |
-| 1024       | 0.000155058 | 0.00014358  | 0.000147815 | 0.000148903 | 0.000149233 | 0.00014891 |
+| 1          | 0.000035725 | 0.000033305 | 0.00003438  | 0.000035015 | 0.000034465 | 0.00003457 |
+| 2          | 0.000034675 | 0.000039183 | 0.000034955 | 0.000033395 | 0.000035067 | 0.00020202 |
+| 4          | 0.00003436  | 0.000037483 | 0.000035145 | 0.00003508  | 0.000034585 | 0.00003533 |
+| 8          | 0.00003558  | 0.00003434  | 0.000028762 | 0.000035118 | 0.000034497 | 0.00003366 |
+| 16         | 0.00003485  | 0.000056045 | 0.000036365 | 0.000036208 | 0.000029417 | 0.00003857 |
+| 32         | 0.000037152 | 0.00003001  | 0.000037935 | 0.000038383 | 0.000037945 | 0.00003628 |
+| 64         | 0.000042538 | 0.000106525 | 0.000042335 | 0.000044285 | 0.000042878 | 0.00005571 |
+| 128        | 0.00005626  | 0.000054795 | 0.000055803 | 0.00005634  | 0.000055607 | 0.00005576 |
+| 256        | 0.000067785 | 0.000082495 | 0.000057449 | 0.000084812 | 0.000086797 | 0.00007586 |
+| 512        | 0.000156008 | 0.000146812 | 0.000145438 | 0.00014607  | 0.00014652  | 0.00014817 |
+| 1024       | 0.000304038 | 0.0002711   | 0.000272065 | 0.000271907 | 0.000418733 | 0.00030756 |
+
+**Determinism analysis**
+
+*The two files consist of the same, but different, character :*
+
+| symbol1.txt | 0000000000000000000000022bb55ee60000000000000000000000022bb55ee6 |
+|------------:|------------------------------------------------------------------|
+| symbol2.txt | 0000000000000000000000022bb660060000000000000000000000022bb66006 |
+
+*The two files consist of 1001 randomly generated characters :*
+
+| 1001symbols1.txt | 07744cc55dd44ff22cc88cc77aa66dd507744cc55dd44ff22cc88cc77aa66dd5 |
+|-----------------:|------------------------------------------------------------------|
+| 1001symbols2.txt | 0bb4466ff991144110077dd889900eec0bb4466ff991144110077dd889900eec |
+
+*The two files consist of 1001 characters, but differ from each other by only one character :*
+
+| 1001symbolsM.txt | 0aa999933ff6611ff88bb22bb99991180aa999933ff6611ff88bb22bb9999118 |
+|-----------------:|------------------------------------------------------------------|
+| 1001symbolsX.txt | 01155aa9911dd55ee77ff7711bbff66301155aa9911dd55ee77ff7711bbff663 |
+
+*Empty file:*
+
+| empty.txt | 0000000000000000000000000115500500000000000000000000000001155005 |
+|----------:|------------------------------------------------------------------|
 
 **Pseudocode**
 
 ```
 Function generateHash(str)
-    Create an array of 8 integers called hash and initialize all elements to 0
+    Create unsigned long called hash and initialize the value to 5381
 
     For each character c in the string str
-        For each i from 0 to 7
-            Increment hash[i] by the result of c * (i + 1)
+        hash = ((hash << 5) + hash) + c
 
     Create a string stream called hashStream
 
     Set hashStream to output in hexadecimal format with leading zeros
 
-    For each i from 0 to 7
-        Add hash[i] to hashStream with a width of 8 characters
+    For each i from 0 to 31
+        Append to hashStream the value of ((hash >> (4 * (31 - i))) & 0xFF) as a two-character hexadecimal string
 
     Return the contents of hashStream as a string
-End Function
+End function
 ```
