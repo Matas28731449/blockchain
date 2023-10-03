@@ -75,6 +75,8 @@ Follow the instructions, <b style="color: blue">happy using!</b>
 | 512        | 0.00009209  | 0.000089252 | 0.000094515 | 0.00009622  | 0.000085825 | 0.00009158 |
 | 1024       | 0.000155058 | 0.00014358  | 0.000147815 | 0.000148903 | 0.000149233 | 0.00014891 |
 
+![graph](https://github.com/Matas28731449/hash-generator/assets/116190079/0e0beea9-edb6-40fe-a2d2-39c99a263e50)
+
 **Determinism analysis**
 
 *The two files consist of the same, but different, character :*
